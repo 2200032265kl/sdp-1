@@ -1,0 +1,29 @@
+{% extends 'navbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <title>Printing</title>
+</head>
+<body>
+{% block body %}
+<div class="container text-center">
+  <div class="row">
+    <div class="col order-last">
+      First in DOM, ordered last
+        <form method="post" action="{% url 'print_to_console' %}">
+        {% csrf_token %}
+        <label> Enter Text:</label>
+        <input type="text" name="akhila" required> <!-- Use the same name as in your view -->
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+    <div class="col">
+      Second in DOM, unordered
+        <br>
+        {{ user_input }} <!-- Display the user_input variable here -->
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
